@@ -28,7 +28,6 @@ jobs:
         make -C grubutils/makerom OSTYPE=MINGW CC=i686-w64-mingw32-gcc
         make -C grubutils/wee
         make -C grubutils/weesetup OSTYPE=MINGW CC=i686-w64-mingw32-gcc
-        make -C umbr
         7z a grubutils.7z umbr/* grubutils/fbinst/fbinst.exe grubutils/loadbin/*.bin grubutils/makemod/makemod.exe grubutils/makerom/makerom.exe grubutils/makerom/*.bin grubutils/weesetup/weesetup.exe
 
     - name: 上传
