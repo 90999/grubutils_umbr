@@ -33,11 +33,12 @@ jobs:
         pwd
         ls -lh umbr
         7z a umbr.7z umbr/
+        ls -lh ./
         
     - name : 生成外链
       uses: actions/upload-artifact@master
       if: always()
       with:
          name: bin
-         path: ./
+         path: /home/runner/work/grubutils_umbr/grubutils_umbr/
            umbr.7z
