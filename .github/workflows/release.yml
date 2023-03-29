@@ -34,11 +34,12 @@ jobs:
         ls -lh umbr
         7z a umbr.7z umbr/
         ls -lh ./
+        cat ${{ env.GITHUB_WORKSPACE }}/grubutils_umbr/umbr.7z
         
     - name : 生成外链
       uses: actions/upload-artifact@master
       if: always()
       with:
          name: bin
-         path: /home/runner/work/grubutils_umbr/grubutils_umbr/
+         path: ${{ env.GITHUB_WORKSPACE }}/grubutils_umbr/
           umbr.7z
