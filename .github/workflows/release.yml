@@ -6,6 +6,7 @@ on:
 #      - master
   watch:
     types: [started]
+  workflow_dispatch:
     
 jobs:
   build:
@@ -29,18 +30,14 @@ jobs:
         echo make -C grubutils/wee
         echo make -C grubutils/weesetup OSTYPE=MINGW CC=i686-w64-mingw32-gcc
         echo 7z a grubutils.7z umbr/* grubutils/fbinst/fbinst.exe grubutils/loadbin/*.bin grubutils/makemod/makemod.exe grubutils/makerom/makerom.exe grubutils/makerom/*.bin grubutils/weesetup/weesetup.exe
+        pwd
         ls -lh umbr
         7z a umbr.7z umbr/
         
-    - name: 上传
-      uses: marvinpinto/action-automatic-releases@latest
+    - name : 生成外链
+      uses: actions/upload-artifact@master
+      if: always()
       with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: false
-        title: "Development Build"
-        files: |
-            g4dext-*.zip
-            g4eext-*.zip
-            grubutils.7z
-            umbr.7z
+         name: bin
+         path: ./
+           umbr.7z
