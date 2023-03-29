@@ -20,16 +20,18 @@ jobs:
     - name: 编译
       run: |
         make -C umbr
-        make -j -C g4dext
-        make -j -C g4eext
-        make -C grubutils/fbinst OSTYPE=MINGW CC=i686-w64-mingw32-gcc
-        make -C grubutils/loadbin
-        make -C grubutils/makemod OSTYPE=MINGW CC=i686-w64-mingw32-gcc
-        make -C grubutils/makerom OSTYPE=MINGW CC=i686-w64-mingw32-gcc
-        make -C grubutils/wee
-        make -C grubutils/weesetup OSTYPE=MINGW CC=i686-w64-mingw32-gcc
-        7z a grubutils.7z umbr/* grubutils/fbinst/fbinst.exe grubutils/loadbin/*.bin grubutils/makemod/makemod.exe grubutils/makerom/makerom.exe grubutils/makerom/*.bin grubutils/weesetup/weesetup.exe
-
+        echo make -j -C g4dext
+        echo make -j -C g4eext
+        echo make -C grubutils/fbinst OSTYPE=MINGW CC=i686-w64-mingw32-gcc
+        echo make -C grubutils/loadbin
+        echo make -C grubutils/makemod OSTYPE=MINGW CC=i686-w64-mingw32-gcc
+        echo make -C grubutils/makerom OSTYPE=MINGW CC=i686-w64-mingw32-gcc
+        echo make -C grubutils/wee
+        echo make -C grubutils/weesetup OSTYPE=MINGW CC=i686-w64-mingw32-gcc
+        echo 7z a grubutils.7z umbr/* grubutils/fbinst/fbinst.exe grubutils/loadbin/*.bin grubutils/makemod/makemod.exe grubutils/makerom/makerom.exe grubutils/makerom/*.bin grubutils/weesetup/weesetup.exe
+        ls -lh umbr
+        7z a umbr.7z umbr/
+        
     - name: 上传
       uses: marvinpinto/action-automatic-releases@latest
       with:
@@ -41,3 +43,4 @@ jobs:
             g4dext-*.zip
             g4eext-*.zip
             grubutils.7z
+            umbr.7z
