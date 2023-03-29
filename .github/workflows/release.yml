@@ -40,5 +40,5 @@ jobs:
       if: always()
       with:
          name: bin
-         path: /home/runner/work/grubutils_umbr/grubutils_umbr/
-           umbr.7z
+         path: /home/runner/work/grubutils_umbr/
+          umbr.7z
